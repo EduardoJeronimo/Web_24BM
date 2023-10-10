@@ -17,6 +17,11 @@ namespace Web_24BM.Models
         public string CURP { get; set; }
         [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
+
+        [StringLength(13)]
+        public string RFC { get; set; }
+
+        public string Area_De_Trabajo { get; set; }
         
     }
 }

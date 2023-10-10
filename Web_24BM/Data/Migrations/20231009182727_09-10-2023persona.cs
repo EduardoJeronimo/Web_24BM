@@ -21,6 +21,7 @@ namespace Web24BM.Data.Migrations
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CURP = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
                     FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
+                 
                 },
                 constraints: table =>
                 {
