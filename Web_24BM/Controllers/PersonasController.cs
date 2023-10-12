@@ -144,7 +144,7 @@ namespace Web_24BM.Controllers
             if (_context.personas == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.personas'  is null.");
-            }
+            } 
             var persona = await _context.personas.FindAsync(id);
             if (persona != null)
             {
