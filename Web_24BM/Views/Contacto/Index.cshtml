@@ -47,33 +47,32 @@
     @if (TempData["EmailT"] != null)
     {
         <div class="alert alert-success" role="alert">
-            Se envio un correo de @TempData["EmailT"]
+            Se ha enviado un correo de @TempData["EmailT"]
         </div>
     }
     <div class="row">
         <div class="col-12">
-            <h3 class="text-center">
-                Formulario de Contacto</h3>
-            <p class="text-center"> Escribe un mensaje y contactanos</p>
+            <h3 class="text-center">Formulario de contacto</h3>
+            <p class="text-center">Escribenos un mensaje y contactanos.</p>
         </div>
         <div class="col-8">
             <form asp-action="EnviarEmail" method="post">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                    <textarea name="comentario" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="comentario" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" class="btn btn-primary" value="Enviar" />
+                    <input type="submit" class="btn btn-primary" value="Enviar">
                 </div>
             </form>
         </div>
         <div class="col-4">
-            <h3>Solicita Informacion</h3>
-            <p>Envianos tu comentario y te respoderemos</p>
+            <h3>Solicita información</h3>
+            <p>Envianos tu comentarioi y te responderemos en breve.</p>
         </div>
     </div>
 </div>
