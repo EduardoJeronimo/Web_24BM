@@ -17,8 +17,8 @@ namespace Web_24BM.Models
         [Required(ErrorMessage ="La direccion es un campo obligatorio")]
         public string Direccion { get; set; }
         public string Objetivo { get; set; }
-        public IFormFile Foto { get; set; }
-        public List <DatosLaboral> DatosLaborales { get; set;}
+        public IFormFile? Foto { get; set; }
+        public List <DatosLaboral>? DatosLaborales { get; set;}
 
     }
 }

@@ -10,10 +10,10 @@
             <p class="text-center">Escribenos un mensaje y te contactaremos.</p>
         </div>
         <div class="col-8">
-            <form asp-action="EnviarFormulario" method="post">
+            <form asp-action="EnviarFormulario" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nombres</label>
-                    <input type="text" asp-for="Nombre" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="text" asp-for="Nombre" class="form-control" placeholder="name@example.com">
                     <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
                 
@@ -25,24 +25,28 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input type="text" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="text" asp-for="Email" class="form-control" placeholder="name@example.com">
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Fecha de Nacimiento</label>
-                    <input type="datetime" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="date" asp-for="FechaNacimiento" class="form-control" placeholder="name@example.com">
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Direccion</label>
-                    <input type="text" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="text" asp-for="Direccion" class="form-control"  placeholder="name@example.com">
+                    <span asp-validation-for="Direccion" class="text-danger"></span>
                 </div>
                 
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Foto</label>
-                    <input type="file" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="file" asp-for="Foto" class="form-control"  placeholder="name@example.com">
+                    <span asp-validation-for="Foto" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Objetivo</label>
-                    <textarea class="form-control" asp-for="Objetivo" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" asp-for="Objetivo"  rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-primary" value="Enviar">

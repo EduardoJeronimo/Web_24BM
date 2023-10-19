@@ -10,6 +10,11 @@ namespace Web_24BM.Controllers
             return View();
         }
 
+        public IActionResult Curriculum()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult EnviarFormulario(Curriculum model)
         {
