@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ver Currículum</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mt-4" style="background-color: #009BFF; color: white; padding: 10px;">Curriculum de @Model.Nombre</h1>
+
+        <div class="bg-info p-4 rounded text-white">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    @if (!string.IsNullOrEmpty(Model.NombreFoto))
+                    {
+                        <img src="~/img/@Model.NombreFoto" alt="Foto" class="img-thumbnail rounded-circle">
+                    }
+                </div>
+         
+                <div class="col-md-8">
+                    <h2>Datos Personales</h2>
+                    <dl class="row">
+                        <dt class="col-sm-4">Nombre:</dt>
+                        <dd class="col-sm-8">@Model.Nombre</dd>
+
+                        <dt class="col-sm-4">Apellidos:</dt>
+                        <dd class="col-sm-8">@Model.Apellidos</dd>
+
+                        <dt class="col-sm-4">Email:</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4">CURP:</dt>
+                        <dd class="col-sm-8">@Model.Curp</dd>
+
+                        <dt class="col-sm-4">Fecha de Nacimiento:</dt>
+                        <dd class="col-sm-8">@Model.FechaNacimiento.ToShortDateString()</dd>
+
+                        <dt class="col-sm-4">Dirección:</dt>
+                        <dd class="col-sm-8">@Model.Dirrecion</dd>
+                    </dl>
+                    <h2>Objetivo:</h2>
+                    <p>@Model.Objetivo</p>
+
+                    <h2>Datos Laborales:</h2>
+                    <dl class="row">                    
+                        <dd class="col-sm-8">@Model.DatosLaboral</dd>
+                    </dl>
+                    
+                </div>
+
+                
+            </div>
+            <div class="d-flex justify-content-end">
+                <a asp-action="Index" asp-controller="Curriculum" class="btn btn-secondary rounded-pill">Regresar</a>
+            </div>
+        </div>
+
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

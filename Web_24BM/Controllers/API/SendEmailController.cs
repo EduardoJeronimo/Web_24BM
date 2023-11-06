@@ -9,9 +9,9 @@ namespace Web_24BM.Controllers.API
     [ApiController]
     public class SendEmailController : ControllerBase
     {
-        private readonly IEmailSenderService _emailSenderService;
+        private readonly IEmailSenderServices _emailSenderService;
 
-        public SendEmailController(IEmailSenderService emailSenderService)
+        public SendEmailController(IEmailSenderServices emailSenderService)
         {
             _emailSenderService = emailSenderService;
         }
@@ -20,8 +20,8 @@ namespace Web_24BM.Controllers.API
         public IActionResult Send(MensajeViewModel model)
 
         {
-            var result = _emailSenderService.SendEmailwithData(model);
-            if(result)
+            var result = _emailSenderService.SendEmailWithData(model);
+            if((bool)result)
             {
                 return Ok(model);
             }
@@ -34,3 +34,4 @@ namespace Web_24BM.Controllers.API
 
     }
 }
+//jeronimo

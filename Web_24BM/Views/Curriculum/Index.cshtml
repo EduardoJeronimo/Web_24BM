@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Web_24BM.Models.Curriculum>
+
+<div class="container">
+    <h1 class="text-center mt-4" style="background-color: #009BFF; color: white; padding: 10px;">Currículums</h1>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert @TempData["MessageType"] col-12">
+            @TempData["Message"]
+        </div>
+    }
+
+    <div class="row mt-3">
+        <div class="col-12 mt-3">
+            <a class="btn btn-success rounded-pill" asp-action="Create" asp-controller="Curriculum">Nuevo curriculum</a>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Curp</th>
+                        <th>Fecha nacimiento</th>
+                        <th>Dirección</th>
+                        <th>Objetivo</th>
+                        <th>Datos laborales</th>
+                        <th>Foto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellidos</td>
+                            <td>@item.Email</td>
+                            <td>@item.Curp</td>
+                            <td>@item.FechaNacimiento</td>
+                            <td>@item.Dirrecion</td>
+                            <td>@item.Objetivo</td>
+                            <td>@item.DatosLaboral</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.NombreFoto))
+                                {
+                                    <img src="~/img/@item.NombreFoto" alt="Foto" class="img-thumbnail" />
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-success rounded-pill" asp-action="Edit" asp-controller="Curriculum" asp-route-idCurriculum="@item.Id">Editar</a>
+                                    <a class="btn btn-primary rounded-pill" asp-action="View" asp-controller="Curriculum" asp-route-idCurriculum="@item.Id">Vista</a>
+                                    <form asp-action="Delete" method="post" class="ml-2 rounded-pill">
+                                        <input type="hidden" name="idCurriculum" value="@item.Id">
+                                        <button type="submit" class="btn btn-danger rounded-pill">Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

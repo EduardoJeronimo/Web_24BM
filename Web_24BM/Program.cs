@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using web_24BM.Services;
 using Web_24BM.Data;
 using Web_24BM.Services;
 
@@ -13,10 +14,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddTransient<IEmailSenderServices, EmailSenderService>();
+builder.Services.AddTransient<ICurriculum, CurriculumService>();
 builder.Services.AddSession();
-builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,7 +34,6 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseSession();
 
 app.UseRouting();
 

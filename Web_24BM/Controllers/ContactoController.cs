@@ -8,9 +8,9 @@ namespace Web_24BM.Controllers
 {
     public class ContactoController : Controller
     {
-        private readonly IEmailSenderService _emailSender;
+        private readonly IEmailSenderServices _emailSender;
 
-        public ContactoController(IEmailSenderService emailSender)
+        public ContactoController(IEmailSenderServices emailSender)
         {
             _emailSender = emailSender;
         }

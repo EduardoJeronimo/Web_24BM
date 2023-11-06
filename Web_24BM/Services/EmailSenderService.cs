@@ -1,43 +1,50 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using Web_24BM.Models;
-using System.Net.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Web_24BM.Services
 {
-    public class EmailSenderService : IEmailSenderService
+    public class EmailSenderService : IEmailSenderServices
     {
         public bool SendEmail(string email)
         {
             bool result = false;
+
             try
             {
                 MailMessage mail = new MailMessage();
-                SmtpClient smtp = new SmtpClient("mail.shapp.mx", 587);
+                SmtpClient smtpClient = new SmtpClient("mail.shapp.mx", 587);
 
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("moises.puc@shapp.mx", "Dhaserck_999");
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("moises.puc@shapp.mx", "Dhaserck_999");
+
                 mail.From = new MailAddress("moises.puc@shapp.mx", "Administrador");
                 mail.To.Add(email);
                 mail.Subject = "Aviso de contacto";
                 mail.IsBodyHtml = true;
-                mail.Body = $"Se ha contactado la persona con el correo {email} para solicitar informacion";
-                smtp.Send(mail);
+                mail.Body = $"Se ha contactado a la persona con el correo {email} para su contacto";
+
+                smtpClient.Send(mail);
 
                 result = true;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+
             }
+
             return result;
+
         }
 
-
-        public bool ProcesarS(EmailViewModel email)
+        public bool ProcesarSolicitud(EmailViewModel email)
         {
+
+
             bool result = false;
 
             try
@@ -76,30 +83,33 @@ namespace Web_24BM.Services
             return result;
         }
 
-        public bool SendEmailwithData(MensajeViewModel model)
+        public bool SendEmailWithData(MensajeViewModel model)
         {
             bool result = false;
             try
             {
                 MailMessage mail = new MailMessage();
-                SmtpClient smtp = new SmtpClient("mail.shapp.mx", 587);
+                SmtpClient smtpClient = new SmtpClient("mail.shapp.mx", 587);
 
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("moises.puc@shapp.mx", "Dhaserck_999");
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("moises.puc@shapp.mx", "Dhaserck_999");
+
                 mail.From = new MailAddress("moises.puc@shapp.mx", "Administrador");
                 mail.To.Add(model.Email);
-                mail.Subject = model.SubJect;
+                mail.Subject = model.Subject;
                 mail.IsBodyHtml = true;
                 mail.Body = model.Content;
-                smtp.Send(mail);
+
+                smtpClient.Send(mail);
 
                 result = true;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
 
             }
+
             return result;
         }
     }

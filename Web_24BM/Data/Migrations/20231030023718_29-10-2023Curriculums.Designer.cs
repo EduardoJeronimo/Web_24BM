@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_24BM.Data;
 
@@ -11,9 +12,11 @@ using Web_24BM.Data;
 namespace Web24BM.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231030023718_29-10-2023Curriculums")]
+    partial class _29102023Curriculums
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,15 +240,7 @@ namespace Web24BM.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Curp")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DatosLaboral")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Dirrecion")
+                    b.Property<string>("Direccion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -261,10 +256,6 @@ namespace Web24BM.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("NombreFoto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Objetivo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -272,6 +263,42 @@ namespace Web24BM.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("curriculums");
+                });
+
+            modelBuilder.Entity("Web_24BM.Models.DatosLaboral", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Contacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CurriculumId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Empresa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Puesto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CurriculumId");
+
+                    b.ToTable("DatosLaboral");
                 });
 
             modelBuilder.Entity("Web_24BM.Models.Persona", b =>
@@ -362,6 +389,18 @@ namespace Web24BM.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Web_24BM.Models.DatosLaboral", b =>
+                {
+                    b.HasOne("Web_24BM.Models.Curriculum", null)
+                        .WithMany("DatosLaborales")
+                        .HasForeignKey("CurriculumId");
+                });
+
+            modelBuilder.Entity("Web_24BM.Models.Curriculum", b =>
+                {
+                    b.Navigation("DatosLaborales");
                 });
 #pragma warning restore 612, 618
         }

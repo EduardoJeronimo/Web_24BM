@@ -1,41 +1,24 @@
-﻿<div class="mx-auto p-2" style="width: 1000px;">
-<div class="container mt-12">
-    <div class="row">
-        <div class="col-md-4">
-            <img src="~/img/escenario 1.jpg" alt="Foto" class="img-thumbnail rounded-circle">
-        </div>
-        <div class="col-md-8">
-            <h1>Tu Nombre</h1>
-            <p>Apellidos</p>
-            <p>Email: email@example.com</p>
-            <p>Fecha de Nacimiento:</p>
-            <p>Dirección:</p>
-        </div>
+﻿@model Web_24BM.Models.Curriculum
+<title>Mi Currículum</title>
+<!-- Agrega el enlace al archivo CSS de Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container">
+    <h1 class="text-center">Mi Currículum</h1>
+
+    <div class="section photo">
+        <img src="~/img/kawa.jpg" alt="Foto" class="img-thumbnail rounded-circle" style="width:250px; height: 200px;">
     </div>
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h2>Objetivo</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi magnam
-                accusamus, in eius vitae, sequi consectetur
-                nobis deserunt necessitatibus voluptatibus nisi cum provident sed,
-                accusantium quaerat sit voluptate omnis quasi?
-            </p>
-        </div>
+    <div class="section">
+        <h2>Información Personal</h2>
+        <p><span class="info-label">Nombre:</span> Nombre</p>
+        <p><span class="info-label">Apellidos:</span> Apellidos</p>
+        <p><span class="info-label">Email:</span> Email</p>
+        <p><span class="info-label">Fecha de Nacimiento:</span> FechaNacimiento</p>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h3>Datos Laborales</h3>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <h5 class="mb-2">Puesto:</h5>
-                    <p class="mb-2">Empresa:</p>
-                    <p class="mb-2">Contacto:</p>
-                    <p class="mb-2">Fecha de Inicio:</p>
-                    <p class="mb-2">Fehca de Fin: </p>
-                </div>
-            </div>
-        </div>
+
+    <div class="section">
+        <h2>Comentario</h2>
+        <p>Objetivo</p>
     </div>
-</div>
 </div>

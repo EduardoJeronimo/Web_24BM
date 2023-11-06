@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Net.Mail;
+
 using Web_24BM.Models;
 using Web_24BM.Services;
 
@@ -8,13 +9,13 @@ namespace Web_24BM.Controllers
 {
     public class FormularioController : Controller
     {
-        private readonly IEmailSenderService _emailsenderservice;
+        private readonly IEmailSenderServices _emailsenderservice;
         public IActionResult Index()
         {
             _emailsenderservice.SendEmail("moises.torres@upqroo.edu.mx");
             return View();
         }
-        public FormularioController(IEmailSenderService emailsenderservice)
+        public FormularioController(IEmailSenderServices emailsenderservice)
         {
             _emailsenderservice = emailsenderservice;
         }

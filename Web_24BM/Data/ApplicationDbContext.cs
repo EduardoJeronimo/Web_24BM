@@ -8,6 +8,8 @@ namespace Web_24BM.Data
     {
         public virtual DbSet<Persona> personas { get; set; }
 
+        public virtual DbSet<Curriculum> curriculums { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -1,0 +1,98 @@
+﻿@model Web_24BM.Models.Curriculum
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center mt-4" style="background-color: #009BFF; color: white; padding: 10px;">Crear Curriculum</h1>
+          
+            <form asp-action="Create" asp-controller="Curriculum" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="Nombre" class="form-label">Nombre</label>
+                    <input type="text" id="Nombre" asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Apellidos" class="form-label">Apellidos</label>
+                    <input type="text" id="Apellidos" asp-for="Apellidos" class="form-control" />
+                    <span asp-validation-for="Apellidos" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="email" id="Email" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Curp" class="form-label">Curp</label>
+                    <input type="text" id="Curp" asp-for="Curp" class="form-control" maxlength="18" />
+                    <span asp-validation-for="Curp" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="FechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" id="FechaNacimiento" asp-for="FechaNacimiento" class="form-control" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Dirrecion" class="form-label">Dirección</label>
+                    <input type="text" id="Dirrecion" asp-for="Dirrecion" class="form-control" />
+                    <span asp-validation-for="Dirrecion" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Objetivo" class="form-label">Objetivo</label>
+                    <input type="" id="Objetivo" asp-for="Objetivo" class="form-control" />
+                    <span asp-validation-for="Objetivo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="DatosLaboral" class="form-label">Datos laborales</label>
+                    <textarea type="text" id="DatosLaboral" asp-for="DatosLaboral" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="DatosLaboral" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="NombreFoto" class="form-label">Nombre de la foto</label>
+                    <input type="text" id="NombreFoto" asp-for="NombreFoto" class="form-control" />
+                    <span asp-validation-for="NombreFoto" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Foto" class="form-label">Foto</label>
+                    <input type="file" id="Foto" name="Foto" class="form-control" />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('Curp').addEventListener('input', function () {
+                var curp = this.value;
+                if (curp.length !== 18) {
+                    this.setCustomValidity('La CURP debe tener exactamente 18 caracteres.');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var fechaNacimientoInput = document.getElementById('FechaNacimiento');
+            fechaNacimientoInput.addEventListener('input', function () {
+                var selectedDate = new Date(this.value);
+                var today = new Date();
+
+                if (selectedDate >= today) {
+                    this.setCustomValidity('La fecha de nacimiento debe ser anterior a la fecha actual.');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+        });
+    </script>
+
+
+</div>
